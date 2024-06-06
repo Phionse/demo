@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BroadcastingFormalMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.BroadcastingFormal">
+    <!--@mbg.generated-->
+    <!--@Table broadcasting_formal-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="device_name" jdbcType="VARCHAR" property="deviceName" />
+    <result column="device_resource_code" jdbcType="VARCHAR" property="deviceResourceCode" />
+    <result column="device_status" jdbcType="VARCHAR" property="deviceStatus" />
+    <result column="village" jdbcType="VARCHAR" property="village" />
+    <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="lon" jdbcType="VARCHAR" property="lon" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="town" jdbcType="VARCHAR" property="town" />
+    <result column="installation_position" jdbcType="VARCHAR" property="installationPosition" />
+    <result column="natural_village" jdbcType="VARCHAR" property="naturalVillage" />
+    <result column="intensity" jdbcType="VARCHAR" property="intensity" />
+    <result column="m" jdbcType="VARCHAR" property="m" />
+    <result column="da" jdbcType="VARCHAR" property="da" />
+    <result column="db" jdbcType="VARCHAR" property="db" />
+    <result column="distance" jdbcType="DOUBLE" property="distance" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, device_name, device_resource_code, device_status, village, lat, lon, province, 
+    area, city, town, installation_position, natural_village, intensity, `m`, da, db, 
+    distance
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from broadcasting_formal
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from broadcasting_formal
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.pojo.BroadcastingFormal" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into broadcasting_formal (device_name, device_resource_code, device_status, 
+      village, lat, lon, 
+      province, area, city, 
+      town, installation_position, natural_village, 
+      intensity, `m`, da, db, 
+      distance)
+    values (#{deviceName,jdbcType=VARCHAR}, #{deviceResourceCode,jdbcType=VARCHAR}, #{deviceStatus,jdbcType=VARCHAR}, 
+      #{village,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{lon,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{town,jdbcType=VARCHAR}, #{installationPosition,jdbcType=VARCHAR}, #{naturalVillage,jdbcType=VARCHAR}, 
+      #{intensity,jdbcType=VARCHAR}, #{m,jdbcType=VARCHAR}, #{da,jdbcType=VARCHAR}, #{db,jdbcType=VARCHAR}, 
+      #{distance,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.demo.pojo.BroadcastingFormal" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into broadcasting_formal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="deviceResourceCode != null">
+        device_resource_code,
+      </if>
+      <if test="deviceStatus != null">
+        device_status,
+      </if>
+      <if test="village != null">
+        village,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="lon != null">
+        lon,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="town != null">
+        town,
+      </if>
+      <if test="installationPosition != null">
+        installation_position,
+      </if>
+      <if test="naturalVillage != null">
+        natural_village,
+      </if>
+      <if test="intensity != null">
+        intensity,
+      </if>
+      <if test="m != null">
+        `m`,
+      </if>
+      <if test="da != null">
+        da,
+      </if>
+      <if test="db != null">
+        db,
+      </if>
+      <if test="distance != null">
+        distance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceResourceCode != null">
+        #{deviceResourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceStatus != null">
+        #{deviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null">
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null">
+        #{lon,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null">
+        #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="installationPosition != null">
+        #{installationPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="naturalVillage != null">
+        #{naturalVillage,jdbcType=VARCHAR},
+      </if>
+      <if test="intensity != null">
+        #{intensity,jdbcType=VARCHAR},
+      </if>
+      <if test="m != null">
+        #{m,jdbcType=VARCHAR},
+      </if>
+      <if test="da != null">
+        #{da,jdbcType=VARCHAR},
+      </if>
+      <if test="db != null">
+        #{db,jdbcType=VARCHAR},
+      </if>
+      <if test="distance != null">
+        #{distance,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.BroadcastingFormal">
+    <!--@mbg.generated-->
+    update broadcasting_formal
+    <set>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceResourceCode != null">
+        device_resource_code = #{deviceResourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceStatus != null">
+        device_status = #{deviceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null">
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null">
+        lon = #{lon,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="town != null">
+        town = #{town,jdbcType=VARCHAR},
+      </if>
+      <if test="installationPosition != null">
+        installation_position = #{installationPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="naturalVillage != null">
+        natural_village = #{naturalVillage,jdbcType=VARCHAR},
+      </if>
+      <if test="intensity != null">
+        intensity = #{intensity,jdbcType=VARCHAR},
+      </if>
+      <if test="m != null">
+        `m` = #{m,jdbcType=VARCHAR},
+      </if>
+      <if test="da != null">
+        da = #{da,jdbcType=VARCHAR},
+      </if>
+      <if test="db != null">
+        db = #{db,jdbcType=VARCHAR},
+      </if>
+      <if test="distance != null">
+        distance = #{distance,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.BroadcastingFormal">
+    <!--@mbg.generated-->
+    update broadcasting_formal
+    set device_name = #{deviceName,jdbcType=VARCHAR},
+      device_resource_code = #{deviceResourceCode,jdbcType=VARCHAR},
+      device_status = #{deviceStatus,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      lon = #{lon,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      town = #{town,jdbcType=VARCHAR},
+      installation_position = #{installationPosition,jdbcType=VARCHAR},
+      natural_village = #{naturalVillage,jdbcType=VARCHAR},
+      intensity = #{intensity,jdbcType=VARCHAR},
+      `m` = #{m,jdbcType=VARCHAR},
+      da = #{da,jdbcType=VARCHAR},
+      db = #{db,jdbcType=VARCHAR},
+      distance = #{distance,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
