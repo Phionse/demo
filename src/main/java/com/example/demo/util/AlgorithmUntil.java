@@ -1,6 +1,5 @@
 package com.example.demo.util;
 
-import com.example.demo.pojo.DistanceCalculationUnitl;
 import com.example.demo.pojo.IntensityAttenuationDto;
 
 import java.math.BigDecimal;
