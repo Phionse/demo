@@ -1,4 +1,4 @@
-package com.example.demo.util;//为什么甚至路径都一样，还是com.github.shyiko.***，
+package com.example.demo.util;
 // 因为com.zendesk这个包，里面包了个com.github.shyiko.***这玩意，我怀疑是收购关系
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
