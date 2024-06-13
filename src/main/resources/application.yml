@@ -18,9 +18,12 @@ spring:
       max-lifetime: 30000
       maximum-pool-size: 10
       minimum-idle: 3
-    password: lctech1234
+#    password: lctech1234
+    password: mapengxin..??521
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://121.196.59.69:3306/earthquake?serverTimezone=GMT%2B8
+#    url: jdbc:mysql://121.196.59.69:3306/earthquake?serverTimezone=GMT%2B8
+    url: jdbc:mysql://sh-cynosdbmysql-grp-n5wdw4sy.sql.tencentcdb.com:26137/earthquake?serverTimezone=GMT%2B8
+#    username: root
     username: root
 
   redis:
