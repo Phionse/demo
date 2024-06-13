@@ -1,5 +1,5 @@
 package com.example.demo.util;
-// 因为com.zendesk这个包，里面包了个com.github.shyiko.***这玩意，我怀疑是收购关系
+
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.event.*;
 import org.springframework.boot.ApplicationArguments;
