@@ -4,6 +4,7 @@ package com.example.demo.util;
 import org.apache.commons.lang3.StringUtils;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
@@ -46,8 +47,7 @@ public class DistanceCalculationUnitl {
 
         //保留小数点后两位
         BigDecimal bd = new BigDecimal(s/1000);
-        double result = bd.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        return result;
+        return bd.setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
 
