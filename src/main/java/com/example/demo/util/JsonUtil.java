@@ -2,10 +2,20 @@ package com.example.demo.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.mozilla.universalchardet.UniversalDetector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
- 
+import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 /**
  * @Author: yansf
  * @Description:JSON工具类
@@ -47,4 +57,38 @@ public class JsonUtil {
         return pojo;
  
     }
+
+
+    /**
+     * 获得文件编码格式
+     *
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    public static String getFileEncode(File file) throws IOException {
+        FileInputStream in = new FileInputStream(file);
+        String code = "utf-8";
+        byte[] buf = new byte[4096];
+        UniversalDetector detector = new UniversalDetector(null);
+
+        // (2)
+        int nread;
+        while ((nread = in.read(buf)) > 0 && !detector.isDone()) {
+            detector.handleData(buf, 0, nread);
+        }
+        // (3)
+        detector.dataEnd();
+
+        // (4)
+        String encoding = detector.getDetectedCharset();
+        if (StringUtils.isNotEmpty(encoding)) {
+            code = encoding;
+        }
+        return code;
+    }
+
+
+
+
 }

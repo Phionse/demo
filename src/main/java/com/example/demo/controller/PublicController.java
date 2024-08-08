@@ -18,15 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.IntStream;
 
 /**
  * @author Mr.ma.com
@@ -53,11 +45,11 @@ public class PublicController {
 
 
     @PostMapping("/uploadShpAndGetInfo")
-    public void uploadShpAndGetInfo(@RequestParam MultipartFile multipartFile) throws Exception {
+    public void uploadShpAndGetInfo(@RequestParam MultipartFile multipartFile) throws IOException {
         String fileName = multipartFile.getOriginalFilename();
         if (StrUtil.isNotBlank(fileName)) {
             String fileType = fileName.split("[.]")[1];
-            if (fileType.endsWith("zip")) {
+            if (!fileType.endsWith("zip")) {
                 // 不是以.shp结尾的文件
                 log.error("上传的文件格式只能是.shp文件和.zip压缩包!");
             } else {
@@ -71,12 +63,13 @@ public class PublicController {
                 }
                 //创建文件
                 File file = FileUtil.file(path);
-                if(!fileType.endsWith("zip")){
+                if(fileType.endsWith("zip")){
                     //解压
-                    File unzip = ZipUtil.unzip(multipartFile.getInputStream(), file, CharsetUtil.CHARSET_UTF_8);
-                    //获取以.shp结尾的文件
-                    List<File> shp = FileUtil.loopFiles(unzip, pathname -> pathname.getName().endsWith("shp"));
-                    HttpTest1.getShapeFile(shp.get(1));
+//                    File unzip = ZipUtil.unzip(multipartFile.getInputStream(), file, CharsetUtil.CHARSET_UTF_8);
+                        File unzip = ZipUtil.unzip(multipartFile.getInputStream(), file,CharsetUtil.CHARSET_ISO_8859_1);
+                        //获取以.shp结尾的文件
+                        List<File> shp = FileUtil.loopFiles(unzip, pathname -> pathname.getName().endsWith("shp"));
+                        HttpTest1.getShapeFile(shp.get(0));
                 }
 
             }
