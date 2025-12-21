@@ -12,19 +12,36 @@ spring:
       max-file-size: 10MB
       max-request-size: 15MB
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      connection-test-query: SELECT 1
-      max-lifetime: 30000
-      maximum-pool-size: 10
-      minimum-idle: 3
-#    password: lctech1234
-    password: mapengxin..??521
-    type: com.zaxxer.hikari.HikariDataSource
-#    url: jdbc:mysql://121.196.59.69:3306/earthquake?serverTimezone=GMT%2B8
-    url: jdbc:mysql://sh-cynosdbmysql-grp-n5wdw4sy.sql.tencentcdb.com:26137/earthquake?serverTimezone=GMT%2B8
+    dynamic:
+      primary: master
+      strict: false
+      datasource:
+        master:
+          url: jdbc:mysql://sh-cynosdbmysql-grp-n5wdw4sy.sql.tencentcdb.com:26137/halodb?serverTimezone=GMT%2B8
+          username: root
+          password: mysqlpassword123@
+          driver-class-name:  com.mysql.cj.jdbc.Driver
+        slave_1:
+          url: jdbc:mysql://sh-cynosdbmysql-grp-n5wdw4sy.sql.tencentcdb.com:26137/nacos_config?serverTimezone=GMT%2B8
+          username: root
+          password: mysqlpassword123@
+          driver-class-name:  com.mysql.cj.jdbc.Driver
+
+
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    hikari:
+#      connection-test-query: SELECT 1
+#      max-lifetime: 30000
+#      maximum-pool-size: 10
+#      minimum-idle: 3
+##    password: lctech1234
+#    password: mapengxin..??521
+#    type: com.zaxxer.hikari.HikariDataSource
+##    url: jdbc:mysql://121.196.59.69:3306/earthquake?serverTimezone=GMT%2B8
+#    url: jdbc:mysql://sh-cynosdbmysql-grp-n5wdw4sy.sql.tencentcdb.com:26137/earthquake?serverTimezone=GMT%2B8
+##    username: root
 #    username: root
-    username: root
+
 
   redis:
     database: 15
@@ -46,11 +63,9 @@ spring:
   jmx:
     enabled: false
 mybatis-plus:
-  global-config:
-    db-config:
-      logic-delete-field: delFlag
-  mapper-locations: classpath:mapper/*.xml
-  typeAliasesPackage: cn.liancheng.lc.domain
+  type-aliases-package: com.example.demo.pojo  # 明确指定实体类包，避免扫描到工具类
+  configuration:
+    map-underscore-to-camel-case: true
 
 # Sa-Token配置
 sa-token:

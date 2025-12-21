@@ -4,16 +4,13 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.ZipUtil;
-import com.example.demo.server.BroadcastingFormalService;
-import com.example.demo.util.HttpTest1;
+import com.example.demo.server.impl.ConfigInfoService;
+import com.example.demo.server.impl.OptionsService;
 import com.example.demo.util.PagePro;
 import com.example.demo.util.ResultView;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -31,17 +28,12 @@ import java.util.List;
 public class PublicController {
 
 
+
     @Autowired
-    public BroadcastingFormalService broadcastingFormalService;
+    public OptionsService optionsService;
 
-
-    @PostMapping("/getMenus")
-    public ResultView getMenus(int num,int size){
-        PagePro pagePro = new PagePro();
-        pagePro.setPageNum(num);
-        pagePro.setPageSize(size);
-        return ResultView.success(broadcastingFormalService.process(pagePro));
-    }
+    @Autowired
+    public ConfigInfoService configInfoService;
 
 
     @PostMapping("/uploadShpAndGetInfo")
@@ -69,13 +61,18 @@ public class PublicController {
                         File unzip = ZipUtil.unzip(multipartFile.getInputStream(), file,CharsetUtil.CHARSET_ISO_8859_1);
                         //获取以.shp结尾的文件
                         List<File> shp = FileUtil.loopFiles(unzip, pathname -> pathname.getName().endsWith("shp"));
-                        HttpTest1.getShapeFile(shp.get(0));
                 }
 
             }
         } else {
             log.error("文件不能为空!");
         }
+    }
+
+    @GetMapping("/gettest")
+    public ResultView gettest(){
+//        return ResultView.success(optionsService.selectByPrimaryKey(1));
+        return ResultView.success(configInfoService.selectByPrimaryKey(Long.valueOf("1")));
     }
 
 
