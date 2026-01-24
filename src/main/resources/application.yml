@@ -7,14 +7,6 @@ server:
     buffer-size: 204800
     direct-buffers: true
 spring:
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
-    suffix: .html
-    encoding: UTF-8
-    servlet:
-      content-type: text/html
-    mode: HTML5
   servlet:
     multipart:
       max-file-size: 10MB
@@ -70,11 +62,23 @@ spring:
     time-zone: GMT+8q
   jmx:
     enabled: false
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    mode: HTML5
 mybatis-plus:
   type-aliases-package: com.example.demo.pojo  # 明确指定实体类包，避免扫描到工具类
   configuration:
     map-underscore-to-camel-case: true
-
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
 # Sa-Token配置
 sa-token:
   # token名称 (同时也是cookie名称)
