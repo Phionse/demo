@@ -24,12 +24,12 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, data_id, group_id, content, md5, gmt_create, gmt_modified, src_user, src_ip, 
+    id, data_id, group_id, content, md5, gmt_create, gmt_modified, src_user, src_ip,
     app_name, tenant_id, c_desc, c_use, effect, `type`, c_schema, encrypted_data_key
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from config_info
     where id = #{id,jdbcType=BIGINT}
@@ -41,17 +41,17 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.demo.pojo.ConfigInfo" useGeneratedKeys="true">
     <!--@mbg.generated-->
-    insert into config_info (data_id, group_id, content, 
-      md5, gmt_create, gmt_modified, 
-      src_user, src_ip, app_name, 
-      tenant_id, c_desc, c_use, 
-      effect, `type`, c_schema, 
+    insert into config_info (data_id, group_id, content,
+      md5, gmt_create, gmt_modified,
+      src_user, src_ip, app_name,
+      tenant_id, c_desc, c_use,
+      effect, `type`, c_schema,
       encrypted_data_key)
-    values (#{dataId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, 
-      #{md5,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
-      #{srcUser,jdbcType=LONGVARCHAR}, #{srcIp,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR}, 
-      #{tenantId,jdbcType=VARCHAR}, #{cDesc,jdbcType=VARCHAR}, #{cUse,jdbcType=VARCHAR}, 
-      #{effect,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{cSchema,jdbcType=LONGVARCHAR}, 
+    values (#{dataId,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR},
+      #{md5,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP},
+      #{srcUser,jdbcType=LONGVARCHAR}, #{srcIp,jdbcType=VARCHAR}, #{appName,jdbcType=VARCHAR},
+      #{tenantId,jdbcType=VARCHAR}, #{cDesc,jdbcType=VARCHAR}, #{cUse,jdbcType=VARCHAR},
+      #{effect,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{cSchema,jdbcType=LONGVARCHAR},
       #{encryptedDataKey,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.demo.pojo.ConfigInfo" useGeneratedKeys="true">

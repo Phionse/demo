@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>个人征信报告</title>
+	<style>
+		body {
+			font-family: "SimSun", serif;
+			font-size: 14px;
+			margin: 20px;
+		}
+		.report-header {
+			text-align: center;
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.table-container {
+			margin: 15px 0;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 10px 0;
+		}
+		table, th, td {
+			border: 1px solid #000;
+		}
+		th, td {
+			padding: 6px 8px;
+			text-align: center;
+		}
+		th {
+			background-color: #f0f0f0;
+			font-weight: bold;
+		}
+		.section-title {
+			font-weight: bold;
+			margin-top: 15px;
+			padding: 5px;
+			background-color: #f5f5f5;
+			border: 1px solid #ddd;
+		}
+		.clearfix::after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		.right-align {
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+	<!-- 报告标题 -->
+	<div class="report-header">个人征信报告</div>
+	<!-- 页面标题 -->
+	<div class="right-align" style="margin-bottom:10px;">
+		<span th:text="${name}">个人征信报告</span>
+	</div>
+	<div>
+	<!-- 2019年还款状态表格 -->
+		<div class="table-container">
+			<table>
+				<thead>
+				<tr>
+				<th rowspan="2">2019</th>
+				<th rowspan="2">还款状态</th>
+				<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th>
+			</tr>
+			<tr>
+				<th colspan="12">逾期（透支）总额</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td th:each="number : ${list}" th:text="${number}"></td>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- 信贷交易信息明细（已结清） -->
+	<div class="section-title">（一）非循环贷账户 信贷交易信息明细(已结清)</div>
+	<!-- 账户1：其他个人消费贷款 -->
+	<div class="table-container">
+		<div style="font-weight: bold; margin-bottom: 5px;">账户1：<span th:text="${account1?.creditAgreementNo}">（授信协议标识...）</span></div>
+		<table>
+			<tr  th:if="${account1?.accountNo != null}">
+				<td>账户编号</td>
+				<td th:text="${account1?.accountNo}"></td>
+				<td>管理机构</td>
+				<td th:text="${account1?.managementOrg}"></td>
+				<td>账户标识</td>
+				<td th:text="${account1?.accountTag}"></td>
+				<td>开立日期</td>
+				<td th:text="${account1?.openDate}"></td>
+				<td>到期日期</td>
+				<td th:text="${account1?.expireDate}"></td>
+				<td>借款金额</td>
+				<td th:text="${account1?.loanAmount}"></td>
+				<td>账户币种</td>
+				<td th:text="${account1?.currency}"></td>
+			</tr>
+			<tr>
+				<td>业务种类</td>
+				<td th:text="${account2.businessType}">其他个人消费贷款</td>
+				<td>担保方式</td>
+				<td th:text="${account2.guaranteeType}">抵押</td>
+				<td>还款期数</td>
+				<td th:text="${account2.repaymentTerms}">12</td>
+				<td>还款频率</td>
+				<td th:text="${account2.repaymentFreq}">月</td>
+				<td>还款方式</td>
+				<td th:text="${account2.repaymentMethod}">-</td>
+				<td>共同借款标志</td>
+				<td th:text="${account2.jointBorrowFlag}">无</td>
+			</tr>
+			<tr>
+				<td>账户状态</td>
+				<td th:text="${account1?.accountStatus}">结清</td>
+				<td colspan="6">截至<span th:text="${account1?.lastRecordDate}">2019-11-16</span>日的最新还款记录</td>
+				<td>账户关闭日期</td>
+					<td th:each="number : ${list2}" th:text="${number}"></td>
+			</tr>
+		</table>
+	</div>
+	<!-- 信贷交易信息明细（已结清） -->
+	<div class="section-title">（一）非循环贷账户 信贷交易信息明细(已结清)</div>
+	<!-- 账户1：其他个人消费贷款 -->
+	<div class="table-container">
+		<div style="font-weight: bold; margin-bottom: 5px;">账户1：<span th:text="${account1?.creditAgreementNo}">（授信协议标识...）</span></div>
+		<table>
+			<tr  th:if="${account1?.accountNo != null}">
+				<td>账户编号</td>
+				<td th:text="${account1?.accountNo}"></td>
+				<td>管理机构</td>
+				<td th:text="${account1?.managementOrg}"></td>
+				<td>账户标识</td>
+				<td th:text="${account1?.accountTag}"></td>
+				<td>开立日期</td>
+				<td th:text="${account1?.openDate}"></td>
+				<td>到期日期</td>
+				<td th:text="${account1?.expireDate}"></td>
+				<td>借款金额</td>
+				<td th:text="${account1?.loanAmount}"></td>
+				<td>账户币种</td>
+				<td th:text="${account1?.currency}"></td>
+			</tr>
+			<tr>
+				<td>业务种类</td>
+				<td th:text="${account2.businessType}">其他个人消费贷款</td>
+				<td>担保方式</td>
+				<td th:text="${account2.guaranteeType}">抵押</td>
+				<td>还款期数</td>
+				<td th:text="${account2.repaymentTerms}">12</td>
+				<td>还款频率</td>
+				<td th:text="${account2.repaymentFreq}">月</td>
+				<td>还款方式</td>
+				<td th:text="${account2.repaymentMethod}">-</td>
+				<td>共同借款标志</td>
+				<td th:text="${account2.jointBorrowFlag}">无</td>
+			</tr>
+			<tr>
+				<td>账户状态</td>
+				<td th:text="${account1?.accountStatus}">结清</td>
+				<td colspan="6">截至<span th:text="${account1?.lastRecordDate}">2019-11-16</span>日的最新还款记录</td>
+				<td>账户关闭日期</td>
+				<td th:each="number : ${list2}" th:text="${number}"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+<body>
+<!-- 遍历 Map Entry -->
+<ul>
+	<li th:each="entry : ${userMap}"
+		th:text="${entry.key + ': ' + entry.value}">
+		键值对
+	</li>
+</ul>
+</body>
+</html>
