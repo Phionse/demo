@@ -7,6 +7,14 @@ server:
     buffer-size: 204800
     direct-buffers: true
 spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    mode: HTML5
   servlet:
     multipart:
       max-file-size: 10MB
@@ -52,7 +60,7 @@ spring:
         max-idle: 8
         max-wait: 30000ms
         min-idle: 1
-    password: ''
+    password: 'redis'
     port: 6379
     timeout: 6000ms
   main:
